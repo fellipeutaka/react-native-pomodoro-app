@@ -9,8 +9,9 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const Banner = styled(LottieView)`
-  width: 85%;
-  margin-bottom: 10%;
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 20%;
 `;
 
 export const Text = styled.Text`

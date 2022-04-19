@@ -4,12 +4,15 @@ import { useState, useEffect, useMemo, useCallback } from "react";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { Container, Title, Text } from "./styles";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { AppStackNavigationProps } from "types/AppStackNavigationProps";
 
 const INITIAL_TIME_IN_SECONDS = 25 * 60; // 25 minutes
 
 export default function Timer() {
   const [count, setCount] = useState(INITIAL_TIME_IN_SECONDS);
   const [active, setActive] = useState(false);
+  const navigation = useNavigation<AppStackNavigationProps>();
 
   useEffect(() => {
     if (active) {
@@ -18,8 +21,8 @@ export default function Timer() {
       }, 1000);
 
       if (count === 0) {
+        navigation.navigate("Congrats");
         setActive(false);
-        clearInterval(interval);
         setCount(INITIAL_TIME_IN_SECONDS);
       }
 

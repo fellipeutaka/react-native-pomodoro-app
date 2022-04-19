@@ -3,6 +3,7 @@ import { AppStackParamsList } from "types/AppStackParamsList";
 
 import Welcome from "screens/Welcome";
 import Timer from "screens/Timer";
+import Congrats from "screens/Congrats";
 
 const Stack = createNativeStackNavigator<AppStackParamsList>();
 
@@ -14,6 +15,7 @@ export default function AppStack() {
     >
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Timer" component={Timer} />
+      <Stack.Screen name="Congrats" component={Congrats} />
     </Stack.Navigator>
   );
 }
