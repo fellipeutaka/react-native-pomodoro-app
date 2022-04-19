@@ -6,12 +6,14 @@ module.exports = (api) => {
       [
         "module-resolver",
         {
-          root: ["./src"],
+          root: ["./"],
           extensions: [".ts", ".tsx", ".js", ".json"],
           alias: {
             components: "./src/components",
             screens: "./src/screens",
             routes: "./src/routes",
+            types: "./src/types",
+            assets: "./assets",
           },
         },
       ],
