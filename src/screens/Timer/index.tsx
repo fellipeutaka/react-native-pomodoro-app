@@ -6,7 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { AppStackNavigationProps } from "types/AppStackNavigationProps";
 
-const INITIAL_TIME_IN_SECONDS = 5; // 25 minutes
+const INITIAL_TIME_IN_SECONDS = 25 * 60; // 25 minutes
 
 export default function Timer() {
   const [count, setCount] = useState(INITIAL_TIME_IN_SECONDS);
