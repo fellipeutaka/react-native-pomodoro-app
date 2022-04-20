@@ -1,13 +1,12 @@
 import Button from "components/Button";
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { AnimatedCircularProgress } from "react-native-circular-progress";
-import { Container, Title, Text } from "./styles";
+import { Container, Title, Text, CircularProgressbar } from "./styles";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { AppStackNavigationProps } from "types/AppStackNavigationProps";
 
-const INITIAL_TIME_IN_SECONDS = 25 * 60; // 25 minutes
+const INITIAL_TIME_IN_SECONDS = 5; // 25 minutes
 
 export default function Timer() {
   const [count, setCount] = useState(INITIAL_TIME_IN_SECONDS);
@@ -57,21 +56,14 @@ export default function Timer() {
     <Container>
       <StatusBar style="auto" />
       <Title>Let&apos;s focus for</Title>
-      <AnimatedCircularProgress
-        size={260}
-        width={10}
-        fill={progress}
-        rotation={0}
-        tintColor="#f54477"
-        backgroundColor="#2c303f"
-      >
+      <CircularProgressbar fill={progress}>
         {() => (
           <Text>
             {String(minutes).padStart(2, "0")}:
             {String(seconds).padStart(2, "0")}
           </Text>
         )}
-      </AnimatedCircularProgress>
+      </CircularProgressbar>
       <Button onPress={toggleTimer}>{iconButton}</Button>
     </Container>
   );

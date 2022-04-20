@@ -13,6 +13,7 @@ module.exports = (api) => {
             screens: "./src/screens",
             routes: "./src/routes",
             types: "./src/types",
+            themes: "./src/themes",
             assets: "./assets",
           },
         },
