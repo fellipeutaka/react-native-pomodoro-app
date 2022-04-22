@@ -6,7 +6,7 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/fellipeutaka/react-native-pomodoro-app?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/fellipeutaka/react-native-pomodoro-app?style=for-the-badge)
 
-<img src="./doc/demo.gif" alt="Pomodoro GIF">
+https://user-images.githubusercontent.com/68625746/164814163-785ebd19-27cb-48bb-8001-a4a88efb1c9b.mp4
 
 ### Adjustments and improvements
 
