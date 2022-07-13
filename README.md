@@ -8,6 +8,10 @@
 
 https://user-images.githubusercontent.com/68625746/164814163-785ebd19-27cb-48bb-8001-a4a88efb1c9b.mp4
 
+Try the demo on [![Expo Go](https://github.com/craftzdog/react-native-animated-todo/blob/master/doc/expo-logo.svg)](https://snack.expo.dev/@fellipeutaka/github.com-fellipeutaka-react-native-pomodoro-app)
+<br />
+![exp://exp.host/@fellipeutaka/github.com-fellipeutaka-react-native-pomodoro-app](https://user-images.githubusercontent.com/68625746/178656589-016eddf8-d73c-4697-9447-f7b30357a509.png)
+
 ### Adjustments and improvements
 
 The project is still in development and the next updates will focus on the following tasks:
