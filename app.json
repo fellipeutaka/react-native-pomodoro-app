@@ -9,14 +9,12 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#181a20"
+      "backgroundColor": "#181A20"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.fellipeutaka.pomodora"
@@ -25,7 +23,16 @@
       "favicon": "./assets/icon.png"
     },
     "android": {
-      "package": "com.fellipeutaka.pomodora"
+      "package": "com.fellipeutaka.pomodora",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#F76992"
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a223e290-519f-414e-b51b-b6aceb5a4185"
+      }
     }
   }
 }

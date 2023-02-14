@@ -9,7 +9,7 @@ import { useTheme } from "styled-components/native";
 import BackgroundTimer from "react-native-background-timer";
 import * as Notifications from "expo-notifications";
 
-const INITIAL_TIME_IN_SECONDS = 5; // 25 minutes
+const INITIAL_TIME_IN_SECONDS = 25 * 60; // 25 minutes
 
 type RenderCurrentTimeProps = {
   minutes: number;
