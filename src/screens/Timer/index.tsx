@@ -1,17 +1,34 @@
-import Button from "components/Button";
-import { StatusBar } from "expo-status-bar";
-import { useState, useEffect, useMemo, useCallback } from "react";
-import { Container, Title, Text, CircularProgressbar } from "./styles";
+import { useState, useEffect } from "react";
+import { Container, Title, Text } from "./styles";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { AppStackNavigationProps } from "types/AppStackNavigationProps";
+import { AppStackNavigationProps } from "@pomodoro/@types/AppStackNavigationProps";
+import { Button } from "@pomodoro/components/Button";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
+import { useTheme } from "styled-components/native";
 
 const INITIAL_TIME_IN_SECONDS = 25 * 60; // 25 minutes
 
-export default function Timer() {
+type RenderCurrentTimeProps = {
+  minutes: number;
+  seconds: number;
+};
+
+function renderCurrentTime(props: RenderCurrentTimeProps) {
+  const minutes = String(props.minutes).padStart(2, "0");
+  const seconds = String(props.seconds).padStart(2, "0");
+  return `${minutes}:${seconds}`;
+}
+
+export function Timer() {
   const [count, setCount] = useState(INITIAL_TIME_IN_SECONDS);
   const [active, setActive] = useState(false);
-  const navigation = useNavigation<AppStackNavigationProps>();
+  const { colors } = useTheme();
+  const { navigate } = useNavigation<AppStackNavigationProps>();
+
+  const minutes = Math.floor(count / 60);
+  const seconds = count % 60;
+  const progress = (count * 100) / INITIAL_TIME_IN_SECONDS;
 
   useEffect(() => {
     if (active) {
@@ -20,7 +37,7 @@ export default function Timer() {
       }, 1000);
 
       if (count === 0) {
-        navigation.navigate("Congrats");
+        navigate("Congrats");
         setActive(false);
         setCount(INITIAL_TIME_IN_SECONDS);
       }
@@ -31,40 +48,26 @@ export default function Timer() {
     }
   }, [active, count]);
 
-  const minutes = useMemo(() => Math.floor(count / 60), [count]);
-  const seconds = useMemo(() => count % 60, [count]);
-  const progress = useMemo(
-    () => (count * 100) / INITIAL_TIME_IN_SECONDS,
-    [count]
-  );
-  const iconButton = useMemo(
-    () => (
-      <Ionicons
-        name={active ? "pause-outline" : "play-outline"}
-        size={24}
-        color="white"
-      />
-    ),
-    [active]
-  );
-
-  const toggleTimer = useCallback(() => {
-    setActive(!active);
-  }, [active]);
-
   return (
     <Container>
-      <StatusBar style="auto" />
-      <Title>Let&apos;s focus for</Title>
-      <CircularProgressbar fill={progress}>
-        {() => (
-          <Text>
-            {String(minutes).padStart(2, "0")}:
-            {String(seconds).padStart(2, "0")}
-          </Text>
-        )}
-      </CircularProgressbar>
-      <Button onPress={toggleTimer}>{iconButton}</Button>
+      <Title>Let's focus for</Title>
+      <AnimatedCircularProgress
+        size={260}
+        width={10}
+        rotation={0}
+        tintColor={colors.primary}
+        backgroundColor={colors.secondary}
+        fill={progress}
+      >
+        {() => <Text>{renderCurrentTime({ minutes, seconds })}</Text>}
+      </AnimatedCircularProgress>
+      <Button onPress={() => setActive((state) => !state)}>
+        <Ionicons
+          name={active ? "pause-outline" : "play-outline"}
+          size={24}
+          color="white"
+        />
+      </Button>
     </Container>
   );
 }

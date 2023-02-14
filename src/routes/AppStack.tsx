@@ -1,13 +1,12 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { AppStackParamsList } from "types/AppStackParamsList";
-
-import Welcome from "screens/Welcome";
-import Timer from "screens/Timer";
-import Congrats from "screens/Congrats";
+import type { AppStackParamsList } from "@pomodoro/@types/AppStackParamsList";
+import { Congrats } from "@pomodoro/screens/Congrats";
+import { Welcome } from "@pomodoro/screens/Welcome";
+import { Timer } from "@pomodoro/screens/Timer";
 
 const Stack = createNativeStackNavigator<AppStackParamsList>();
 
-export default function AppStack() {
+export function AppStack() {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}

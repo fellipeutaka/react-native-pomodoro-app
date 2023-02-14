@@ -1,18 +1,17 @@
-import { StatusBar } from "expo-status-bar";
 import { Container, Banner, Text } from "./styles";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { AppStackNavigationProps } from "types/AppStackNavigationProps";
-import Button from "components/Button";
+import { AppStackNavigationProps } from "@pomodoro/@types/AppStackNavigationProps";
+import { Button } from "@pomodoro/components/Button";
+import banner from "@pomodoro/assets/lottie/banner.json";
 
-export default function Welcome() {
+export function Welcome() {
   const navigation = useNavigation<AppStackNavigationProps>();
 
   return (
     <Container>
-      <StatusBar style="auto" />
       <Text>Focused, motivated.</Text>
-      <Banner loop autoPlay autoSize source={require("assets/banner.json")} />
+      <Banner loop autoPlay autoSize source={banner} />
       <Button onPress={() => navigation.navigate("Timer")}>
         <Entypo name="chevron-right" size={24} color="white" />
       </Button>

@@ -1,6 +1,6 @@
-import { Theme } from "types/Theme";
+import type { Theme } from "@pomodoro/@types/Theme";
 
-const theme: Theme = {
+export const theme: Theme = {
   colors: {
     primary: "#f54477",
     secondary: "#2c303f",
@@ -8,5 +8,3 @@ const theme: Theme = {
     text: "#ffffff",
   },
 };
-
-export default theme;

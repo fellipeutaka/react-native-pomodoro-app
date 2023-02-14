@@ -1,14 +1,9 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
-      "components/*": ["./src/components/*"],
-      "screens/*": ["./src/screens/*"],
-      "routes/*": ["./src/routes/*"],
-      "types/*": ["./src/types/*"],
-      "themes/*": ["./src/themes/*"],
-      "assets/*": ["./assets/*"]
+      "@pomodoro/*": ["./*"]
     }
   }
 }
