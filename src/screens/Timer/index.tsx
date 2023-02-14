@@ -6,8 +6,10 @@ import { AppStackNavigationProps } from "@pomodoro/@types/AppStackNavigationProp
 import { Button } from "@pomodoro/components/Button";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { useTheme } from "styled-components/native";
+import BackgroundTimer from "react-native-background-timer";
+import * as Notifications from "expo-notifications";
 
-const INITIAL_TIME_IN_SECONDS = 25 * 60; // 25 minutes
+const INITIAL_TIME_IN_SECONDS = 5; // 25 minutes
 
 type RenderCurrentTimeProps = {
   minutes: number;
@@ -32,18 +34,26 @@ export function Timer() {
 
   useEffect(() => {
     if (active) {
-      const interval = setInterval(() => {
+      const interval = BackgroundTimer.setInterval(() => {
         setCount((state) => state - 1);
       }, 1000);
 
       if (count === 0) {
-        navigate("Congrats");
-        setActive(false);
-        setCount(INITIAL_TIME_IN_SECONDS);
+        Notifications.scheduleNotificationAsync({
+          content: {
+            title: "Pomodoro Timer",
+            body: "Your pomodoro session has ended!",
+          },
+          trigger: null,
+        }).then(() => {
+          navigate("Congrats");
+          setActive(false);
+          setCount(INITIAL_TIME_IN_SECONDS);
+        });
       }
 
       return () => {
-        clearInterval(interval);
+        BackgroundTimer.clearInterval(interval);
       };
     }
   }, [active, count]);

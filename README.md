@@ -18,8 +18,8 @@ The project is still in development and the next updates will focus on the follo
 
 - [x] Start timer
 - [x] Stop timer
-- [ ] Play sounds
-- [ ] Show notifications
+- [x] Play sounds
+- [x] Show notifications
 
 ## 🛠 Technologies Used
 
